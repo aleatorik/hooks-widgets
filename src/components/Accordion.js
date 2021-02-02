@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Accordion = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   const onTitleClick = (index) => {
     // <- helper function(it's not efficiently positioned as being seperate. still inside of the body component)
-    console.log("title clicked", index);
+    setActiveIndex(index);
   };
 
   const renderedItems = items.map((item, index) => {
@@ -25,7 +27,12 @@ const Accordion = ({ items }) => {
     );
   });
 
-  return <div className="ui styled accordion">{renderedItems}</div>;
+  return (
+    <div className="ui styled accordion">
+      {renderedItems}
+      <h1>{activeIndex}</h1>
+    </div>
+  );
 };
 
 export default Accordion;
