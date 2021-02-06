@@ -3,11 +3,11 @@ import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("");
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    // Num 1 solution below (Declare a helper function and execute it immediately)
     const search = async () => {
-      await axios.get("https://en.wikipedia.org/w/api.php", {
+      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
         params: {
           action: "query",
           list: "search",
@@ -16,19 +16,14 @@ const Search = () => {
           srsearch: term,
         },
       });
+
+      setResults(data.query.search);
     };
 
-    search();
-    // Num 2 solution below _ pretty new syntax from ES?
-    // (async () => {
-    //   await axios.get("asokdsf");
-    // })();
-
-    // Num 3 solution below _ Promise()
-    // axios.get('aweoif')
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   });
+    if (term) {
+      // useEffect의 초기렌더링으로 인해 빈 공백을 위키피디아 넣을 때 나오는 에러를 갖게되므로, 초기값이 있을 때, 즉 term에 값이 주어졌을 때만 위의 helper function이 실행되도록 조건문을 거는 것. -> 에러해결
+      search();
+    }
   }, [term]);
 
   return (
