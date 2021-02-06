@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("");
 
-  console.log("I run with every render");
-
   useEffect(() => {
-    console.log("I run after every render and at initial render");
+    // Num 1 solution below (Declare a helper function and execute it immediately)
+    const search = async () => {
+      await axios.get("awpeofij");
+    };
+
+    search();
+    // Num 2 solution below _ pretty new syntax from ES?
+    // (async () => {
+    //   await axios.get("asokdsf");
+    // })();
+
+    // Num 3 solution below _ Promise()
+    // axios.get('aweoif')
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   });
   }, [term]);
 
   return (
