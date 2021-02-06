@@ -31,7 +31,8 @@ const Search = () => {
       <div key={result.pageid} className="item">
         <div className="content">
           <div className="header">{result.title}</div>
-          {result.snippet}
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+          {/* 'dangerouslySetInnerHTML'를 통해 XXS Attack이라 불리는 'Cross site scripting attack'으로 인해 안전상의 구멍을 열어놓을 수 있는 리스크가 생김. 신뢰할 수 있는 URL에 경우에만 위에 dangerouslySetInnerHtml 사용할 것. 왜냐하면 third party가 보내는 html이 개발자 도구에 노출되기 때문에. 이 경우, 위키피디아를 신뢰할 수 있는가? 그들이 보내는 HTML 내용을 신뢰하는가? 해커에 의해 어떤 계정을 해킹하기 위해 앱 안에 유해한 기능의 JS 코드가 심어질 수 있음  */}
         </div>
       </div>
     );
