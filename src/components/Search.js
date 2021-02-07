@@ -20,10 +20,15 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    if (term) {
-      // useEffect의 초기렌더링으로 인해 빈 공백을 위키피디아 넣을 때 나오는 에러를 갖게되므로, 초기값이 있을 때, 즉 term에 값이 주어졌을 때만 위의 helper function이 실행되도록 조건문을 거는 것. -> 에러해결
-      search();
-    }
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        // useEffect의 초기렌더링으로 인해 빈 공백을 위키피디아 넣을 때 나오는 에러를 갖게되므로, 초기값이 있을 때, 즉 term에 값이 주어졌을 때만 위의 helper function이 실행되도록 조건문을 거는 것. -> 에러해결
+        search();
+      }
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [term]);
 
   const renderedResults = results.map((result) => {
