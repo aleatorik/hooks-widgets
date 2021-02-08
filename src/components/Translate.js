@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import Convert from "./Convert";
 
-// AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM -- Google Translate API Key
-
 const options = [
   { label: "Afrikanns", value: "af" },
   { label: "Korean", value: "kr" },
