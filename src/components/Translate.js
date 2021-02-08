@@ -4,8 +4,9 @@ import Convert from "./Convert";
 
 const options = [
   { label: "Afrikanns", value: "af" },
-  { label: "Korean", value: "kr" },
+  { label: "Korean", value: "ko" },
   { label: "German", value: "de" },
+  { label: "Arabic", value: "ar" },
 ];
 
 const Translate = () => {
