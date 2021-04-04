@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Convert = ({ language, text }) => {
-  const [translated, setTranslated] = useState("");
+  const [translated, setTranslated] = useState('');
   const [debouncedText, setDebouncedText] = useState(text);
 
   useEffect(() => {
@@ -12,19 +12,19 @@ const Convert = ({ language, text }) => {
     return () => {
       clearTimeout(timerId);
     };
-    // text state가 500ms가 지나기 전에 바뀌면, timer를 cancle
+    // text state가 500ms가 지나기 전에 바뀌면, timer를 cancel
   }, [text]);
 
   useEffect(() => {
     const doTranslation = async () => {
       const { data } = await axios.post(
-        "https://translation.googleapis.com/language/translate/v2",
+        'https://translation.googleapis.com/language/translate/v2',
         {},
         {
           params: {
             q: debouncedText,
             target: language.value,
-            key: "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM",
+            key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM',
           },
         }
       );

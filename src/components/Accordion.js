@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const onTitleClick = (index) => {
-    // <- helper function(it's not efficiently positioned as being seperate. still inside of the body component)
+    // <- helper function(it's not efficiently positioned as being separate. still inside of the body component)
     setActiveIndex(index);
   };
 
